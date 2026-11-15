@@ -1,0 +1,89 @@
+[project]
+name = "closed-loop-v2"
+version = "0.2.0"
+description = "closed-loop v0.2: does conformal remaining-life coverage survive a replacement policy? A pre-registered study on NASA's C-MAPSS run-to-failure data."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [{ name = "Darrshan Govender" }]
+keywords = [
+    "conformal-prediction",
+    "remaining-useful-life",
+    "predictive-maintenance",
+    "c-mapss",
+    "covariate-shift",
+    "pre-registration",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering",
+    "Typing :: Typed",
+]
+# closed-loop v0.1 supplies the ledger, the hashing, the heavy-run guard and the statistics
+# (docs/adr/0001-design.md, section 2). It is referenced by direct URL and tag only: a bare name
+# would be resolved from PyPI, where a stranger could hold it. Until v0.1 is published, install
+# its local checkout first and this package with --no-deps (README, "Development").
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "scikit-learn>=1.4",
+    # imported directly by closed_loop_v2/estimator.py to fit with one thread (deterministic and
+    # light on a shared machine); scikit-learn already depends on it
+    "threadpoolctl>=3.1",
+    "closed-loop @ git+https://github.com/darrshangovender/closed-loop@v0.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+    "hypothesis>=6.100",
+    "mypy>=1.10",
+]
+
+[project.urls]
+Homepage = "https://github.com/darrshangovender/closed-loop-v2"
+Repository = "https://github.com/darrshangovender/closed-loop-v2"
+Issues = "https://github.com/darrshangovender/closed-loop-v2/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["closed_loop_v2"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -q"
+pythonpath = ["."]
+markers = [
+    "data: needs the C-MAPSS files (CLOSED_LOOP_V2_DATA or data/cmapss); skipped when absent",
+    "slow: takes more than about 20 s",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.format]
+exclude = ["docs/adr/*.md"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+
+[tool.mypy]
+python_version = "3.11"
+files = ["closed_loop_v2", "benchmarks", "scripts"]
+warn_unused_ignores = true
+ignore_missing_imports = true

@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below. Please also acknowledge NASA's C-MAPSS data as the README asks."
+title: "closed-loop v0.2: does conformal remaining-life coverage survive a replacement policy? A pre-registered study on NASA's C-MAPSS data"
+type: software
+license: MIT
+version: 0.2.0
+date-released: "2026-11-15"
+authors:
+  - family-names: Govender
+    given-names: Darrshan
+    email: darrshangovender@gmail.com
+repository-code: "https://github.com/darrshangovender/closed-loop-v2"
+keywords:
+  - conformal-prediction
+  - remaining-useful-life
+  - predictive-maintenance
+  - c-mapss
+  - covariate-shift
+  - pre-registration

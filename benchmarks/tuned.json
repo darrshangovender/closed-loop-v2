@@ -1,0 +1,188 @@
+{
+  "estimator": {
+    "window": 50,
+    "cap": 125.0,
+    "s_min": 2.0,
+    "max_iter": 300,
+    "learning_rate": 0.05,
+    "max_leaf_nodes": 31,
+    "min_samples_leaf": 50
+  },
+  "h": 5.0,
+  "stratum_m": 35.0,
+  "tuned_on": "195 dev units of FD001-FD004 (C-MAPSS, simulated by NASA); dev list sha256 b14e28acb7b5202740ecd7faffe971d54c39afbbac2db40181fca49ae7e8f04a",
+  "criterion": "ADR 0003: estimator by minimum mean V1 width on dev out-of-fold predictions (1% tie rule); h by minimum mean remaining life at replacement with an unplanned-failure fraction of at most 0.05; M by the smallest 5-cycle value with at least 90% of dev units having a stratum row before replacement",
+  "script": "scripts/tune.py",
+  "notes": "h limit met",
+  "record": {
+    "protocol": "docs/adr/0003-tuning-protocol.md",
+    "data": "C-MAPSS, simulated by NASA's C-MAPSS model, not field data",
+    "dev_units": 195,
+    "dev_list_sha256": "b14e28acb7b5202740ecd7faffe971d54c39afbbac2db40181fca49ae7e8f04a",
+    "seed_key": "tune",
+    "alpha": 0.1,
+    "n_folds": 5,
+    "fixed": {
+      "max_iter": 300,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 31,
+      "min_samples_leaf": 50
+    },
+    "estimator_grid": [
+      {
+        "window": 15,
+        "cap": 125.0,
+        "s_min": 2.0,
+        "q_lo": -2.1020777622940217,
+        "q_hi": 2.064915910114406,
+        "mean_width": 48.48247929622987,
+        "pooled_coverage": 0.9140468302796746,
+        "rmse_m": 16.778074549378726,
+        "rows": 44373
+      },
+      {
+        "window": 15,
+        "cap": 125.0,
+        "s_min": 5.0,
+        "q_lo": -1.9840529747757567,
+        "q_hi": 1.6907379175660298,
+        "mean_width": 45.48365532991874,
+        "pooled_coverage": 0.9007053839046267,
+        "rmse_m": 16.778074549378726,
+        "rows": 44373
+      },
+      {
+        "window": 30,
+        "cap": 125.0,
+        "s_min": 2.0,
+        "q_lo": -2.294792079009483,
+        "q_hi": 1.94081783169032,
+        "mean_width": 41.12953283411823,
+        "pooled_coverage": 0.9121537872129448,
+        "rmse_m": 14.873265200667262,
+        "rows": 44373
+      },
+      {
+        "window": 30,
+        "cap": 125.0,
+        "s_min": 5.0,
+        "q_lo": -2.059896087634979,
+        "q_hi": 1.8402662801367882,
+        "mean_width": 40.90022046049344,
+        "pooled_coverage": 0.9100353818763662,
+        "rmse_m": 14.873265200667262,
+        "rows": 44373
+      },
+      {
+        "window": 50,
+        "cap": 125.0,
+        "s_min": 2.0,
+        "q_lo": -2.279140370793755,
+        "q_hi": 2.1601501985273517,
+        "mean_width": 38.23938716681448,
+        "pooled_coverage": 0.9251346539562346,
+        "rmse_m": 13.552912397598604,
+        "rows": 44373
+      },
+      {
+        "window": 50,
+        "cap": 125.0,
+        "s_min": 5.0,
+        "q_lo": -2.097309992736238,
+        "q_hi": 2.0813589715702316,
+        "mean_width": 39.83964867579725,
+        "pooled_coverage": 0.9343068983390801,
+        "rmse_m": 13.552912397598604,
+        "rows": 44373
+      }
+    ],
+    "chosen_quantiles": {
+      "q_lo": -2.279140370793755,
+      "q_hi": 2.1601501985273517
+    },
+    "h_grid": [
+      {
+        "h": 0.0,
+        "failed_fraction": 0.06153846153846154,
+        "replacements": 183.0,
+        "mean_rul_at_replacement": 13.710382513661202
+      },
+      {
+        "h": 5.0,
+        "failed_fraction": 0.0,
+        "replacements": 195.0,
+        "mean_rul_at_replacement": 19.174358974358974
+      },
+      {
+        "h": 10.0,
+        "failed_fraction": 0.0,
+        "replacements": 195.0,
+        "mean_rul_at_replacement": 26.794871794871796
+      },
+      {
+        "h": 15.0,
+        "failed_fraction": 0.0,
+        "replacements": 195.0,
+        "mean_rul_at_replacement": 35.364102564102566
+      },
+      {
+        "h": 20.0,
+        "failed_fraction": 0.0,
+        "replacements": 195.0,
+        "mean_rul_at_replacement": 43.41025641025641
+      },
+      {
+        "h": 25.0,
+        "failed_fraction": 0.0,
+        "replacements": 195.0,
+        "mean_rul_at_replacement": 52.15897435897436
+      },
+      {
+        "h": 30.0,
+        "failed_fraction": 0.0,
+        "replacements": 195.0,
+        "mean_rul_at_replacement": 60.364102564102566
+      }
+    ],
+    "h_limit_met": true,
+    "fail_limit": 0.05,
+    "m_grid": [
+      {
+        "M": 5.0,
+        "units_with_stratum_rows": 0,
+        "fraction": 0.0
+      },
+      {
+        "M": 10.0,
+        "units_with_stratum_rows": 73,
+        "fraction": 0.37435897435897436
+      },
+      {
+        "M": 15.0,
+        "units_with_stratum_rows": 152,
+        "fraction": 0.7794871794871795
+      },
+      {
+        "M": 20.0,
+        "units_with_stratum_rows": 165,
+        "fraction": 0.8461538461538461
+      },
+      {
+        "M": 25.0,
+        "units_with_stratum_rows": 170,
+        "fraction": 0.8717948717948718
+      },
+      {
+        "M": 30.0,
+        "units_with_stratum_rows": 171,
+        "fraction": 0.8769230769230769
+      },
+      {
+        "M": 35.0,
+        "units_with_stratum_rows": 176,
+        "fraction": 0.9025641025641026
+      }
+    ],
+    "m_cover": 0.9
+  }
+}

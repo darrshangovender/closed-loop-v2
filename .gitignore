@@ -1,0 +1,21 @@
+# Downloaded data: fetched by scripts/fetch_cmapss.py, never committed (only data/MANIFEST.json is).
+data/*
+!data/MANIFEST.json
+# Results cache and quick-run output.
+benchmarks/.cache/
+# Internal progress notes.
+docs/adr/progress/
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.hypothesis/
+dist/
+build/
+.coverage
+htmlcov/
+.env
